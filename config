@@ -1,0 +1,10 @@
+show_cmd=0
+show_conf=0
+upsd_path=/usr/local/sbin/upsd
+ups_name=ups
+nut_confpath=/usr/local/etc/nut
+nut_monitor=battery.*:|device.*:|driver.*:|input.*:|ups.*:
+pid_file=/var/db/nut/upsd.pid
+start_cmd=service nut start
+stop_cmd=service nut stop
+restart_cmd=service nut restart

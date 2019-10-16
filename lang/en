@@ -1,0 +1,32 @@
+index_title=NUT Monitor
+index_errconfig=The NUT config file $1 was not found on your system. Maybe NUT is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_errnut=The upsd program $1 was not found on your system. Maybe NUT is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_errfdecfs=The <a href='https://www.freebsd.org/cgi/man.cgi?query=fdescfs&sektion=5&manpath=freebsd-release-ports'>fdescfs(5)</a> is not mounted, performance may suffer. Please run: mount -t fdescfs null /dev/fd <br>You can also permanently mount it in /etc/fstab with the following entry: fdescfs /dev/fd  fdescfs  rw  0  0</br>
+index_return=module index
+index_version=$1
+index_modver=
+index_nuttab=UPS Status
+
+index_edit=Config Editor
+index_advanced=Management
+
+index_start=Start NUT
+index_startmsg=Click to start NUT.
+index_stop=Stop NUT
+index_stopmsg=Click to stop NUT.
+index_restart=Restart NUT
+index_restartmsg=Click to restart NUT.
+
+start_err=Failed to start NUT
+stop_err=Failed to stop NUT
+restart_err=Failed to restart NUT
+
+manual_ecannot=You are not allowed to edit the NUT config files
+manual_ok=Edit
+manual_destroy=Destroy
+manual_efile=Selected file is not part of the NUT configuration
+manual_file=Edit config file:
+manual_edata=Nothing entered!
+manual_err=Failed to save config file
+manual_nutedit=NUT Config Files
+manual_editnote=Note: Be careful, as no validation will be performed on your input!
