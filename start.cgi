@@ -2,7 +2,7 @@
 # start.cgi
 # Start the upsd daemon
 
-require './nut-lib.pl';
+require './nutmonitor-lib.pl';
 &ReadParse();
 &error_setup($text{'start_err'});
 $err = &start_nut();

@@ -2,7 +2,7 @@
 # restart.cgi
 # Restart the upsd daemon
 
-require './nut-lib.pl';
+require './nutmonitor-lib.pl';
 &ReadParse();
 &error_setup($text{'restart_err'});
 $err = &restart_nut();

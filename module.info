@@ -3,4 +3,4 @@ name=NUT Monitor
 category=hardware
 longdesc_en=NUT Monitor Webmin Module
 os_support=freebsd
-version=0.1.1
+version=0.1.2

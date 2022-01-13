@@ -3,5 +3,6 @@
 =============================
 Version        Description
 
+0.1.2..........Fix configuration panel opening error.
 0.1.1..........Add optional start and stop buttons.
 0.1.0..........Initial NUT Monitor module release.

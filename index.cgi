@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # index.cgi
 
-require './nut-lib.pl';
+require './nutmonitor-lib.pl';
 
 # Check if NUT exists.
 if (!&has_command($config{'upsd_path'})) {

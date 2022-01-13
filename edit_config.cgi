@@ -2,7 +2,7 @@
 # edit_config.cgi
 # Show a page for manually editing an NUT config file
 
-require './nut-lib.pl';
+require './nutmonitor-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'index_title'}, "");
 

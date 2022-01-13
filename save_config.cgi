@@ -2,7 +2,7 @@
 # save_config.cgi
 # Update a manually edited config file
 
-require './nut-lib.pl';
+require './nutmonitor-lib.pl';
 &error_setup($text{'manual_err'});
 &ReadParseMime();
 
