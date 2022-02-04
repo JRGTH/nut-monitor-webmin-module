@@ -7,7 +7,7 @@ require './nutmonitor-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "");
 
 @files = ( "$config{'nut_confpath'}/nut.conf", "$config{'nut_confpath'}/ups.conf", "$config{'nut_confpath'}/upsd.conf",
-	"$config{'nut_confpath'}/upsd.users", "$config{'nut_confpath'}/upsmon.conf", "$config{'nut_confpath'}/upssched.conf" );
+	"$config{'nut_confpath'}/upsd.users", "$config{'nut_confpath'}/upsmon.conf", "$config{'nut_confpath'}/upssched.conf", "$config{'upsschedcmd_path'}");
 $in{'file'} ||= $files[0];
 &indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
 print &ui_form_start("edit_config.cgi");

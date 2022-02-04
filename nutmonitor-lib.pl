@@ -6,6 +6,7 @@ use WebminCore;
 &init_config();
 
 my $ups_stat_props="$config{'nut_monitor'}";
+my $ups_cmd_props="$config{'nut_command'}";
 
 # Get NUT version
 sub get_nut_version
@@ -61,6 +62,25 @@ while (my $line =<$fh>)
 return %nut;
 }
 
+sub list_cmd
+{
+my %nut=();
+my $list=`upscmd -l $config{'ups_name'} | sed '1d;2d' | grep -E "$ups_cmd_props"`;
+open my $fh, "<", \$list;
+while (my $line =<$fh>)
+{
+	chomp ($line);
+	my @props = split(" ", $line, 2);
+		$ct = 1;
+		foreach $prop (split(",", "DESCRIPTION")) {
+			$nut{$props[0]}{$prop} = $props[$ct];
+			$ct++;
+		}
+
+}
+return %nut;
+}
+
 # NUT summary list.
 sub ui_nut_list
 {
@@ -74,6 +94,29 @@ foreach $key (sort(keys %nut))
 	foreach $prop (@props) { push (@vals, $nut{$key}{$prop}); }
 	# Disable start, stop and restart buttons.
 	print &ui_columns_row([ "<a href='index.cgi?nut=$key'>$key</a>", @vals ]);
+	$num ++;
+}
+print &ui_columns_end();
+}
+
+# NUT available command list.
+sub ui_nut_advanced
+{
+my %nut = list_cmd($nut);
+@props = split(/,/, "DESCRIPTION");
+print &ui_columns_start([ "COMMAND", @props ]);
+my $num = 0;
+foreach $key (sort(keys %nut))
+{
+	@vals = ();
+	foreach $prop (@props) { push (@vals, $nut{$key}{$prop}); }
+	# Execute ups command.
+	if ($config{'allow_cmdexec'}) {
+		print &ui_columns_row([ "<a href='exec.cgi?nut=$key'>$key</a>", @vals ]);
+		}
+	else {
+		print &ui_columns_row([ "<a href='index.cgi?nut=$key'>$key</a>", @vals ]);
+	}
 	$num ++;
 }
 print &ui_columns_end();
@@ -120,7 +163,7 @@ if ($config{'stop_cmd'}) {
 	}
 else {
 	# Just kill NUT related processes.
-	kill_nut_procs;
+	&kill_nut_procs;
 	}
 return undef;
 }
@@ -141,6 +184,41 @@ else {
 	$out = &backquote_logged("$config{'pid_file'} 2>&1 </dev/null");
 	if ($?) { return "<pre>$out</pre>"; }
 	}
+return undef;
+}
+
+# Attempts to execute UPS command, returning undef on success or an error
+# message always.
+sub exec_nut
+{
+if ($config{'show_advanced'}) {
+	if ($config{'allow_cmdexec'}) {
+		if (($config{'ups_username'}) && ($config{'ups_password'}))  {
+			my $upsname = $config{'ups_name'};
+			my $username = $config{'ups_username'};
+			my $userpass = $config{'ups_password'};
+			my $nutcmd = $in{'nut'};
+
+			local $out = &backquote_logged("upscmd -u $username -p $userpass $upsname $nutcmd 2>&1 </dev/null");
+
+			if ($?) {
+				return "<pre>$out</pre>";
+			} else {
+				&ui_print_header(undef, $text{'index_title'}, "");
+				@result = $out;
+				if (!$result[0]) {
+					print "$text{'exec_ok'} [$nutcmd]<br/>";
+				} else {
+					print "<b>$text{'exec_output'} [$nutcmd]<br><br></b>".$result[0]."<br/>";
+					foreach $key (@result[1..@result]) {
+						print $key."<br/>";
+						}
+				}
+				&ui_print_footer("", $text{'index_return'});
+			}
+		}
+	}
+}
 return undef;
 }
 

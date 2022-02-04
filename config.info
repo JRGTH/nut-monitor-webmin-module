@@ -1,10 +1,16 @@
 line1=Configurable options,11
 upsd_path=Full path to upsd program,0
 ups_name=UPS device name,0
-nut_confpath=Full path to NUT default config files,0
+nut_confpath=Path to NUT default config files,0
+upsschedcmd_path=Full path to NUT upssched-cmd script file,0
 nut_monitor=Custom UPS properties to be displayed,0
+nut_command=Custom UPS commands to be displayed,0
+ups_username=UPS user name,0
+ups_password=UPS user password,0
 pid_file=Full path to NUT PID file,3,None,29
 show_conf=Enable config editor,1,1-Enabled,0-Disabled
+show_advanced=Show device commands,1,1-Enabled,0-Disabled
+allow_cmdexec=Allow execute device commands,1,1-Enabled,0-Disabled
 show_cmd=Enable start stop and restart,1,1-Enabled,0-Disabled
 start_cmd=Command to start NUT,0
 stop_cmd=Command to stop NUT,0

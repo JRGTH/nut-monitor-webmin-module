@@ -8,7 +8,7 @@ index_modver=
 index_nuttab=UPS Status
 
 index_edit=Config Editor
-index_advanced=Management
+index_advanced=UPS Commands
 
 index_start=Start NUT
 index_startmsg=Click to start NUT.
@@ -20,6 +20,10 @@ index_restartmsg=Click to restart NUT.
 start_err=Failed to start NUT
 stop_err=Failed to stop NUT
 restart_err=Failed to restart NUT
+exec_ok=Success:
+exec_output=Output for:
+exec_err=Executing ups command
+exec_userpass=An username and password is required.
 
 manual_ecannot=You are not allowed to edit the NUT config files
 manual_ok=Edit
