@@ -3,6 +3,7 @@
 =============================
 Version        Description
 
+0.2.1..........Add initial support for Linux distros.
 0.2.0..........Ability to execute ups commands, add upssched-cmd edit option.
 0.1.2..........Fix configuration panel opening error.
 0.1.1..........Add optional start and stop buttons.
