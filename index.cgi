@@ -45,11 +45,6 @@ print &ui_tabs_start_tab("mode", "info");
 &ui_nut_list();
 print &ui_tabs_end_tab("mode", "info");
 
-# Start NUT resource tab.
-#print &ui_tabs_start_tab("mode", "res");
-#&ui_nut_res();
-#print &ui_tabs_end_tab("mode", "res");
-
 # Start NUT config tab.
 if ($config{'show_conf'}) {
 	print &ui_tabs_start_tab("mode", "conf");
